@@ -1,0 +1,86 @@
+<!--
+ * @Author: 肖玲
+ * @Date: 2023-07-20 00:18:57
+ * @LastEditTime: 2023-07-20 12:44:31
+ * @LastEditors: 肖玲
+ * @Description: 
+ * @FilePath: /javascript/table.html
+ * 文件备注
+-->
+<!-- 左边Y轴是功能开发，右边Y轴是项目重构工作占比 -->
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Echarts柱状图示例</title>
+  <!-- 引入Echarts库 -->
+  <script src="https://cdn.jsdelivr.net/npm/echarts@5.3.0/dist/echarts.min.js"></script>
+</head>
+<body>
+  <!-- 创建容器 -->
+  <div id="chart-container" style="width: 900px; height: 400px;"></div>
+
+  <script>
+    // 获取容器
+    var chartContainer = document.getElementById('chart-container');
+    // 初始化echarts实例
+    var myChart = echarts.init(chartContainer);
+
+    // 配置图表
+    var option = {
+      title: {
+        text: '功能开发与项目重构柱状图',
+      },
+      legend: {
+        data: ['功能开发', '项目重构占比'],
+      },
+      xAxis: {
+        type: 'category',
+        data: ['S2PWeb端', 'admin后台', '盘龙', '百洋', '京新', '芒哥Web端', '康恩贝', '芒哥小程序', 'S2P小程序'],
+      },
+      yAxis: [
+        {
+          type: 'value',
+          name: '功能开发数量',
+        },
+        {
+          type: 'value',
+          name: '项目重构工作量占比',
+          min: 0,
+          max: 100,
+          interval: 10,
+          axisLabel: {
+            formatter: '{value}%'
+          }
+        },
+      ],
+      series: [
+        {
+          name: '功能开发',
+          type: 'bar',
+          data: [39, 8, 4, 16, 2, 4, 1, 0, 0],
+          yAxisIndex: 0,
+          itemStyle: {
+            color: 'green',
+          },
+        },
+        {
+          name: '项目重构占比',
+          type: 'bar',
+          data: [30, 0, 0, 0, 0, 0, 0, 30, 30],
+          yAxisIndex: 1,
+          itemStyle: {
+            color: 'orange',
+          },
+        },
+      ],
+    };
+
+    // 使用配置项显示图表
+    myChart.setOption(option);
+  </script>
+</body>
+</html>
+
+
+
+
