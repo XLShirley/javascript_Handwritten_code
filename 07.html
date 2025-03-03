@@ -1,0 +1,38 @@
+<!--
+ * @Author: 肖玲
+ * @Date: 2024-09-24 17:43:12
+ * @LastEditTime: 2025-02-25 09:56:52
+ * @LastEditors: 肖玲
+ * @Description: 
+ * @FilePath: /javascript_Handwritten_code/07.html
+ * 文件备注
+-->
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Gradient Background</title>
+        <style>
+            body,
+            html {
+                margin: 0;
+                height: 100%;
+                font-family: Arial, sans-serif;
+            }
+
+            .gradient-background {
+                height: 100vh; /* 占满视口高度 */
+                background-image: url('beijing.png'); /* 渐变色片 */
+                background-size: 100%; /* 背景图覆盖整个 div */
+                background-repeat: no-repeat; /* 不重复背景图 */
+                text-align: center;
+            }
+        </style>
+    </head>
+    <body>
+        <div class="gradient-background">
+            <span>商业用途</span>
+        </div>
+    </body>
+</html>

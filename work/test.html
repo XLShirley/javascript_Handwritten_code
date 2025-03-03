@@ -1,0 +1,29 @@
+<!--
+ * @Author: 肖玲11
+ * @Date: 2024-10-18 15:00:22
+ * @LastEditTime: 2024-10-18 15:00:23
+ * @LastEditors: 肖玲
+ * @Description: 
+ * @FilePath: /javascript_Handwritten_code/work/test.html
+ * 文件备注
+-->
+<html>
+    <body>
+        <h1>Mr Yuan is awaesome!</h1>
+        <button>change</button>
+        <script>
+            var h1 = document.querySelector('h1')
+            var btn = document.querySelector('button')
+            // 死循环指定的时间
+            function delay(duration) {
+                var start = Date.now()
+                while (Date.now() - start < duration) {}
+            }
+
+            btn.onclick = function () {
+                h1.textContent = '袁老师很帅！'
+                delay(3000)
+            }
+        </script>
+    </body>
+</html>
