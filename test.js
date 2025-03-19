@@ -1,7 +1,7 @@
 /*
  * @Author: 肖玲
  * @Date: 2024-04-26 11:07:51
- * @LastEditTime: 2025-03-13 16:53:48
+ * @LastEditTime: 2025-03-14 11:53:44
  * @LastEditors: 肖玲
  * @Description: 
  * @FilePath: /javascript_Handwritten_code/test.js
@@ -564,14 +564,53 @@ function Test(name) {
 // 3. 将构造函数的this指向新对象。
 // 4. 执行构造函数。
 // 5. 如果构造函数返回一个对象，则返回该对象，（基础数据类型忽略）否则返回新对象。
-function Person(name, age){
-    this.name = name;
-    this.age = age;
-}
-Person.prototype.sayName = function () {
-    console.log(this.name)
-}
-const person1 = new Person('Tom', 20)
-console.log(person1)  // Person {name: "Tom", age: 20}
-person1.sayName() // 'Tom'
+// function Person(name, age){
+//     this.name = name;
+//     this.age = age;
+// }
+// Person.prototype.sayName = function () {
+//     console.log(this.name)
+// }
+// const person1 = new Person('Tom', 20)
+// console.log(person1)  // Person {name: "Tom", age: 20}
+// person1.sayName() // 'Tom'
 
+
+// 节流：在规定的时间内只执行一次
+//方法1:时间戳写法（立即执行，停止触发之后没有办法再执行）
+function throttle(fn, delay) {
+    let prev = Date.now()
+    return function (...args) {
+        let now = Date.now()
+        if (now - prev > delay) {
+            fn.apply(null, args)
+            prev = now
+        }
+    }
+}
+
+//方法2:定时器写法（delay毫秒后第一次执行，最后一次触发之后还会再执行一次）
+function throttle(fn, delay) {
+    let timer = null
+    return function (...args) {
+        if (timer) return
+        timer = setTimeout(() => {
+            fn.apply(this, args)
+            timer = null
+        }, delay)
+    }
+}
+
+
+
+// 防抖：在规定的时间内只执行一次
+//方法1:定时器写法（停止触发之后delay毫秒后执行）
+function debounce(fn, delay) {
+    let timer = null
+    return function (...args) {
+        if (timer) clearTimeout(timer)
+        timer = setTimeout(() => {
+            fn.apply(this, args)
+        }, delay)
+    }
+}

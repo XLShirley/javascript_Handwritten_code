@@ -1,0 +1,55 @@
+<!--
+ * @Author: 肖玲
+ * @Date: 2025-03-14 10:54:57
+ * @LastEditTime: 2025-03-16 20:37:26
+ * @LastEditors: 肖玲
+ * @Description: 
+ * @FilePath: /javascript_Handwritten_code/test.html
+ * 文件备注
+-->
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Document</title>
+    </head>
+    <body>
+        <!-- <div class="father">
+            <div class="son">1</div>
+        </div> -->
+        <div></div>
+    </body>
+</html>
+
+<style>
+    div:after {
+        position: absolute;
+        width: 0px;
+        height: 0px;
+        content: ' ';
+        border-right: 100px solid transparent;
+        border-top: 100px solid #ff0;
+        border-left: 100px solid transparent;
+        border-bottom: 100px solid transparent;
+    }
+    .father {
+        /* position: relative; */
+        display: flex;
+    }
+    .son {
+        /* width: 200px; */
+        height: 100px;
+        background-color: red;
+        /* margin: 0 auto; */
+        /* position: absolute;
+            margin-left: 父元素-子元素宽度/2; */
+        /* display: table;
+            margin:  0 auto; */
+        /* position: absolute;
+        transform:translateX(50%);  */
+        /* justify-content: center; */
+        /* align-items: center; */
+        margin: auto;
+    }
+</style>
