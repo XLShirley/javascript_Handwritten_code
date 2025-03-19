@@ -1,7 +1,7 @@
 /*
  * @Author: 肖玲
  * @Date: 2025-03-17 15:49:39
- * @LastEditTime: 2025-03-19 17:00:50
+ * @LastEditTime: 2025-03-19 19:28:25
  * @LastEditors: 肖玲
  * @Description: 
  * @FilePath: /javascript_Handwritten_code/TableComponent.jsx
@@ -130,3 +130,16 @@ export default function TableComponent () {
 //         return str
 //     }
 // }
+
+
+
+//主线程代码const worker=new Worker('worker.js');//创建一个新的Web Worker
+// worker.postMessage({start:0,end:1000000);/向Web Worker.发送消息
+//     worker.onmessage function(event){const result event.data;console.log('任务完成：'，result); };
+//     //worker.js-Web Worker代a码
+//     onmessage =  function(event){const start event.data.start;const end
+//     event.data.end;let sum 0;for (let i start;i <end;i++){
+//     sum +=i;
+//     }
+//     postMessage(sum);//向主线程发送消息
+//     };
