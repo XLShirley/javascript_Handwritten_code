@@ -1,7 +1,7 @@
 /*
  * @Author: 肖玲
  * @Date: 2024-09-23 15:44:50
- * @LastEditTime: 2024-09-25 10:11:12
+ * @LastEditTime: 2025-03-26 15:20:46
  * @LastEditors: 肖玲
  * @Description: 
  * @FilePath: /javascript_Handwritten_code/06_常见几种排序算法.js
@@ -51,11 +51,132 @@ function optimizedBubbleSort (arr) {
 
 
 // 2、选择排序：每一次从待排序的数据元素中选出最小（或最大）的一个元素将其与未排序部分的第一个元素交换位置，直到全部待排序的数据元素排完。选择排序的时间复杂度是O(n^2)。
-// function selectionSort (arr) {
-//     for(let)
-// }
+function selectionSort (arr) {
+    for (let i = 0; i < arr.length; i++) {
+        let minIndex = i; //假设当前索引的元素是最小值
+        // 内层循环：从当前索引的下一个元素开始，找到最小值的索引
+        for (let j = i + 1; j < arr.length; j++) {
+            if (ar[j] < arr[minIndex]) {
+                minIndex = j //更新最小值的索引
+            }
+        }
+        if (minIndex !== i) {
+            // let temp = arr[i]F
+            // arr[i] = arr[minIndex]
+            // arr[minIndex] = temp    
+            [arr[i], arr[minIndex]] = [arr[minIndex], arr[i]] //可优化成ES6解构赋值
+        }
+        return arr;
+    }
+}
+
+// 可优化：双向选择排序在每一轮遍历中，不仅要找到最小值，还要找到最大值。这样可以减少遍历的次数，提高效率。
+function bidirectionalSelectionSort (arr) {
+    let n = arr.length;
+    let left = 0;
+    let right = n - 1;
+    while (left < right) {
+        let minIndex = left;
+        let maxIndex = right;
+        for (let i = left; i <= right; i++) {
+            if (arr[i] < arr[minIndex]) {
+                minIndex = i;
+            }
+            if (arr[i] > arr[maxIndex]) {
+                maxIndex = i;
+            }
+        }
+    }
+    // 交换最小值到最左边
+    if (minIndex !== left) {
+        [arr[left], arr[minIndex]] = [arr[minIndex], arr[left]]
+    }
+    // 处理特殊情况:如果最大值正好被交换到minIndex位置
+    if (maxIndex === left) {
+        maxIndex = minIndex;
+    }
+
+    // 交换最大值到最右边
+    if (maxIndex !== right) {
+        [arr[right], arr[maxIndex]] = [arr[maxIndex], arr[right]]
+    }
+    left++;
+    right--;
+}
 
 
+// 3、插入排序：通过构建有序序列，对于未排序数据在已排序的序列中从后向前扫描，找到相应位置并插入。插入排序的时间复杂度是O(n^2)。
+function insertionSort (arr) {
+    for (let i = 1; i < arr.length; i++) {
+        let key = arr[i]; // 假设当前元素是要插入的元素
+        let j = i - 1;
+        // 从已排序部分的末尾开始，将大于key的元素向后移动
+        while (j >= 0 && arr[j] > key) {
+            arr[j + 1] = arr[j]; // 将元素向后移动
+            j--;
+        }
+        // 将key插入到正确的位置
+        arr[j + 1] = key;
+        return arr;
+    }
+}
+
+// 可优化：(1)二分插入排序是对插入排序的一种改进，通过二分查找来确定插入位置，减少比较次数。时间复杂度为O(nlogn)。
+
+function binaryInsertionSort (arr) {
+    let n = arr.length;
+
+    for (let i = 1; i < n; i++) {
+        let key = arr[i];
+        let left = 0, right = i - 1;
+
+        // 使用二分查找找到插入位置
+        while (left <= right) {
+            let mid = Math.floor((left + right) / 2);
+            if (arr[mid] > key) {
+                right = mid - 1;
+            } else {
+                left = mid + 1;
+            }
+        }
+
+        // 右移元素，为 key 腾出位置
+        for (let j = i - 1; j >= left; j--) {
+            arr[j + 1] = arr[j];
+        }
+
+        // 插入元素
+        arr[left] = key;
+    }
+
+    return arr;
+}
+
+// (2)希尔排序是对插入排序的一种改进，通过将整个序列分成若干个子序列，分别进行插入排序，最后再对整个序列进行一次插入排序。时间复杂度为O(nlogn)。
+function shellSort (arr) {
+    let n = arr.length;
+    let gap = Math.floor(n / 2); // 初始增量设为数组长度的一半
+
+    while (gap > 0) {
+        // 对每个子序列执行插入排序
+        for (let i = gap; i < n; i++) {
+            let temp = arr[i];
+            let j = i;
+
+            // 对当前子序列进行插入排序
+            while (j >= gap && arr[j - gap] > temp) {
+                arr[j] = arr[j - gap]; // 后移元素
+                j -= gap;
+            }
+
+            arr[j] = temp; // 插入元素
+        }
+
+        gap = Math.floor(gap / 2); // 逐步缩小增量
+    }
+
+    return arr;
+}
 
 
 

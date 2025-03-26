@@ -1,0 +1,59 @@
+<!--
+ * @Author: 肖玲
+ * @Date: 2025-03-26 17:14:52
+ * @LastEditTime: 2025-03-26 17:14:53
+ * @LastEditors: 肖玲
+ * @Description: 
+ * @FilePath: /javascript_Handwritten_code/interview/flexBox.html
+ * 文件备注
+-->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>两边固定中间自适应布局</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+    }
+
+    .container {
+      display: flex;  /* 使用 Flexbox 布局 */
+      height: 100vh;  /* 高度占满整个视口 */
+    }
+
+    .left, .right {
+      width: 200px;   /* 固定宽度 */
+      background-color: #3498db;
+      color: white;
+      padding: 20px;
+    }
+
+    .middle {
+      flex-grow: 1;  /* 让中间的内容自适应宽度 */
+      background-color: #f1c40f;
+      padding: 20px;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="container">
+    <div class="left">
+      <h2>左边</h2>
+      <p>固定宽度内容</p>
+    </div>
+    <div class="middle">
+      <h2>中间</h2>
+      <p>自适应宽度内容</p>
+    </div>
+    <div class="right">
+      <h2>右边</h2>
+      <p>固定宽度内容</p>
+    </div>
+  </div>
+
+</body>
+</html>
